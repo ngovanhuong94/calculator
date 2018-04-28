@@ -43,10 +43,8 @@
 
 	<script type="text/javascript">
 		var calculator = {
-			flag_round: 0,
 			result: '',
 			operate: function () {
-				this.flag_round = 1;
 				this.result = Math.round(eval(this.result)*10000) / 10000 + '';
 			},
 			add: function (chr) {
@@ -78,7 +76,6 @@
 					if (result[result.length - 1] != data) calculator.add(data);
 				}
 				else {
-					if (calculator.flag_round == 1) {calculator.clear(); calculator.flag_round = 0;}
 					calculator.add(data);
 				}
 				
@@ -103,9 +100,7 @@
 				case '6':
 				case '7':
 				case '8':
-				case '9': 
-						if (calculator.flag_round == 1) {calculator.clear(); calculator.flag_round = 0;} 
-						calculator.add(e.key); break;
+				case '9':  calculator.add(e.key); break;
 				case '+':
 				case '-':
 				case '*':
