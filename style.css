@@ -59,10 +59,10 @@
 	margin-top: 15px;
 	background-color: #d2e4e4;
 	padding-right: 10px;
-	font-size: 80px;
-	padding-top: 20px;
+	font-size: 75px;
+	padding-top: 8px;
 	font-weight: 300;
-
+	overflow-y: hidden;
 }
 
 
