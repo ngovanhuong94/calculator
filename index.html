@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen+Mono">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+<body>	
+	<div class="description">
+		<h2>Calculator</h2>
+		<h3>Have keyboard support</h3>
+		 <p>Enter: =</p>
+		 <p>Backspace: Undo</p>
+		 <p>Delete: Clear</p>
+	</div>
+	<div class="calculator">
+		<div id="result" class="result">0
+		</div>
+		<div id="btn" data='clear' class="clear">Clear</div>
+		<div id="btn" data='undo' class="undo"><i class="fas fa-long-arrow-alt-left"></i></div>
+		<div id="btn" data='/' class="divide">/</div>
+
+		<div id="btn" data='7' class="seven">7</div>
+		<div id="btn" data='8' class="eight">8</div>
+		<div id="btn" data='9' class="nine">9</div>
+		<div id="btn" data='*' class="multiply">*</div>
+
+		<div id="btn" data='4' class="four">4</div>
+		<div id="btn" data='5' class="five">5</div>
+		<div id="btn" data='6' class="six">6</div>
+		<div id="btn" data='-' class="minus">-</div>
+
+		<div id="btn" data='1' class="one">1</div>
+		<div id="btn" data='2' class="two">2</div>
+		<div id="btn" data='3' class="three">3</div>
+		<div id="btn" data='+' class="plus">+</div>
+
+		<div id="btn" data='.' class="dot">.</div>
+		<div id="btn" data='0' class="zero">0</div>
+		<div id="btn" data='equal' class="equal">=</div>
+	</div>
+
+	<script type="text/javascript">
+		var calculator = {
+			result: '',
+			operate: function () {
+				this.result = Math.round(eval(this.result)*10000) / 10000 + '';
+			},
+			add: function (chr) {
+				this.result = this.result + chr;
+			},
+			undo: function () {
+				this.result = this.result.slice(0, this.result.length -1);
+			},
+			clear: function () {
+				this.result = '';
+			},
+			show_result: function () {
+				return this.result;
+			}
+		}
+		var btns = document.querySelectorAll('#btn');
+		var display_result = document.getElementById('result');
+		console.log(result.textContent)
+
+		btns.forEach(function (btn) {
+			btn.addEventListener('click' , function (e) {
+				var data = e.target.getAttribute('data')
+
+				if (data == 'clear') calculator.clear();
+				else if (data == 'undo') calculator.undo();
+				else if (data == 'equal') calculator.operate();
+				else if (data == '+' || data == '-'|| data == '*' || data == '/' || data == '.') {
+					var result = calculator.show_result();
+					if (result[result.length - 1] != data) calculator.add(data);
+				}
+				else calculator.add(data);
+				
+				var round_result = calculator.show_result();
+				if (round_result == '') display_result.textContent = '0';
+				else if (round_result == 'Infinity') { 
+					display_result.textContent = 'Infinity';
+					calculator.clear();
+				}
+				else display_result.textContent = calculator.show_result();
+			})
+		})
+
+		window.addEventListener('keydown', function (e) {
+			switch(e.key) {
+				case '0':
+				case '1':
+				case '2':
+				case '3':
+				case '4':
+				case '5':
+				case '6':
+				case '7':
+				case '8':
+				case '9': calculator.add(e.key); break;
+				case '+':
+				case '-':
+				case '*':
+				case '/':
+					var result = calculator.show_result();
+					if (result[result.length - 1] != e.key) calculator.add(e.key);
+					break;
+				case 'Backspace': calculator.undo(); break;
+				case 'Enter': calculator.operate(); break;
+				case 'Delete': calculator.clear(); break;
+			}
+			console.log(e.key);
+
+			var round_result = calculator.show_result();
+			if (round_result == '') display_result.textContent = '0';
+			else if (round_result == 'Infinity') { 
+				display_result.textContent = 'Infinity';
+				calculator.clear();
+			}
+			else display_result.textContent = calculator.show_result();
+		})
+
+	</script>
+</body>
+</html>

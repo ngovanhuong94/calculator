@@ -1,0 +1,171 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+.body {
+	background-color: white;
+
+}
+
+.description {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.description h2{
+	font-size: 60px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.description h3 {
+	font-size: 30px;
+}
+
+.calculator {
+	padding: 20px;
+	border-radius: 20px;
+	margin: 50px auto auto auto;
+	width: 600px;
+	height: 800px;
+	background-color: #d1d2d7;
+	border: 2px solid rgba(0,0,0,.6);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+
+	grid-template-areas: "result result result result"
+						 "clear clear undo divide"
+						 "seven eight nine multiply"
+						 "four five six minus"
+						 "one two three plus"
+						 "dot zero equal equal";
+	
+	justify-content: center;
+	font-family: 'IBM Plex Mono', monospace;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+}
+
+.result {
+	grid-area: result;
+	border: 1px solid black;
+	text-align: right;
+	border-radius: 20px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	background-color: #d2e4e4;
+	padding-right: 10px;
+	font-size: 80px;
+	padding-top: 20px;
+	font-weight: 300;
+
+}
+
+
+
+
+.clear, .undo, .divide, .multiply, .minus, .plus,
+.nine, .eight, .seven, .six, .five, .four, .three, .two, .one , .zero, .dot, .equal {
+	padding: 40px;
+	margin: 10px;
+	border-radius: 10px;
+	background-color: #3a3d42;
+	color: white;
+	cursor: pointer;
+}
+
+.clear {
+	grid-area: clear;
+	background-color: #8B0000;
+	
+}
+
+.undo {
+	grid-area: undo;
+	
+}
+
+.divide {
+	grid-area: divide;
+	
+}
+
+.seven {
+	grid-area: seven;
+	
+}
+
+.eight {
+	grid-area: eight;
+	
+}
+
+.nine {
+	grid-area: nine;
+	
+}
+
+.multiply {
+	grid-area: multiply;
+	
+}
+
+.four {
+	grid-area: four;
+	
+}
+
+.five {
+	grid-area: five;
+	
+}
+
+.six {
+	grid-area: six;
+	
+}
+
+.minus {
+	grid-area: minus;
+	
+}
+
+.one {
+	grid-area: one;
+	
+}
+
+.two {
+	grid-area: two;
+	
+}
+
+.three {
+	grid-area: three;
+	
+}
+
+.plus {
+	grid-area: plus;
+	
+}
+
+.dot {
+	grid-area: dot;
+	border: 1px solid black;
+}
+
+.zero {
+	grid-area: zero;
+	
+}
+
+.equal {
+	grid-area: equal;
+	background-color: #CD5C5C;
+	
+}
